@@ -9,23 +9,35 @@ export default class SearchBar extends Component {
   }
 
   onInputChange(event) {
-    console.log(event.target.value);
     this.setState({term: event.target.value});
 
+  }
+  onFormSubmit(event) {
+    //blocks default behaviour of form
+    // if you press enter on your keyboard
+    // the form is not submitted
+    event.preventDefault();
+  }
+  onButtonSubmit(event) {
+    
   }
 
   render() {
     return (
-      <form className="input-group">
+      <form
+        onSubmit={this.onFormSubmit}
+        className="input-group">
         <input
           placeholder="Search for city"
           className="form-control"
           value={this.state.term}
           onChange={this.onInputChange}
           />
-        <p>{this.state.term}</p>
         <span className="input-group-btn">
-          <button type="submit" className="btn btn-secondary">Submit</button>
+          <button
+            type="submit"
+            className="btn btn-secondary"
+            onSubmit={this.onButtonSubmit}>Submit</button>
         </span>
       </form>
     );
