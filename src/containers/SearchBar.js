@@ -41,7 +41,7 @@ class SearchBar extends Component {
           <button
             type="submit"
             className="btn btn-secondary"
-            >Submit</button>
+            >Search</button>
         </span>
       </form>
     );

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 import Chart from '../components/chart';
+import GoogleMapView from './googleMapView';
 
 class WeatherList extends Component {
   constructor(props) {
@@ -13,14 +14,17 @@ class WeatherList extends Component {
 
   renderWeatherData(cityData){
     const name = cityData.city.name;
-    const temps = cityData.list.map((weather) => weather.main.temp);
-
+    const temps = _.map(cityData.list.map((weather) => weather.main.temp), temp => temp - 273);
+    const pressures = cityData.list.map((weather) => weather.main.pressure);
+    const wind = cityData.list.map((weather) => weather.wind.speed);
+    const { lat, lon } = cityData.city.coord;
+    console.log(lat);
        return (
          <tr key={name}>
-           <td>{name}</td>
-           <td>
-              <Chart data={temps} />
-           </td>
+           <td><GoogleMapView lat={lat} lon={lon} /></td>
+           <td><Chart data={temps} color="red" units="°C"/></td>
+           <td><Chart data={pressures} color="blue" units="hPa"/></td>
+           <td><Chart data={wind} color="green" units="mph"/></td>
          </tr>
        );
   }
@@ -67,9 +71,10 @@ class WeatherList extends Component {
         <thead>
           <tr>
             <th>City</th>
-            <th>Temperatur</th>
-            <th>Pressure</th>
-            <th>Humidity</th>
+            <th>Temperatur (°C)</th>
+            <th>Pressure (hPa)</th>
+            <th>Windspeed (mph)</th>
+            <th>Humidity (%)</th>
           </tr>
         </thead>
         <tbody>
