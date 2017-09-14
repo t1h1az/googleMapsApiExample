@@ -1,6 +1,6 @@
 # API Practice
 
-##### To install clone repository
+##### Clone repository
 
 
 ```
