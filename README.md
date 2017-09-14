@@ -4,27 +4,25 @@
 
 
 ```
-
-  $ git clone https://github.com/t1h1az/googleMapsApiExample.git ```
+  git clone https://github.com/t1h1az/googleMapsApiExample.git 
+```
 
 
 ##### Install dependencies
 
 ```
-  $ npm install
+  npm install
 ```
 
 ##### Run
 
 ```
-
-  $ webpack-dev-server
+  webpack-dev-server
 ```
 
 ##### Visit
 
 ```
-
   localhost:8080
 ```
 
